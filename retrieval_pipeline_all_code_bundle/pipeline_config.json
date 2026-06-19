@@ -1,0 +1,30 @@
+{
+  "paths": {
+    "data_dir": "/path/to/data",
+    "ret_raw_zip": "/path/to/ret_raw_trace_files.zip",
+    "ext1_classes_zip": "/path/to/ext1_classes_proportions_only.zip",
+    "ext2_classes_zip": "/path/to/ext2_classes_proportions_only.zip",
+    "ret_classes_zip": "/path/to/ret_classes_proportions_only.zip"
+  },
+  "classification": {
+    "zscore_scope": "entire_session_per_cell",
+    "onset_evoked_rule": {
+      "delta_from_onset": true,
+      "z_threshold": 0.5,
+      "consecutive_frames": 10,
+      "post_onset_seconds": 3.0
+    },
+    "retrieval_early_tone": 1,
+    "retrieval_late_tone": 4
+  },
+  "cohort_sex_map": {
+    "female": ["4", "6", "8", "10", "10488", "10489", "10490", "10491", "11794"],
+    "male": ["1", "2", "3", "5", "7", "9", "10492", "10481", "10482", "11799"]
+  },
+  "outputs": {
+    "ret_classes_dir": "ret_classes",
+    "ret_summary_csv": "Ret_classes_proportions_perAnimal.csv",
+    "ret_cell_long_csv": "Ret_cellClassifications_long.csv"
+  },
+  "notes": "Example retrieval pipeline config. Replace placeholder paths before running."
+}

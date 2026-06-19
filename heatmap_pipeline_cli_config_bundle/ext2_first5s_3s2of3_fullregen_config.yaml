@@ -1,0 +1,52 @@
+out_prefix: "Ext2_first5s_3s2of3_fullregen"
+out_dir: "."
+work_dir: "./_ext2_first5s_heatmap_work_3s2of3_fullregen"
+input_zips:
+  - "./ext2_raw_trace_files.zip"
+
+onset_evoked:
+  dz_thresh: 0.5
+  consec_frames: 10
+  post_win_s: 3.0
+  min_hits_per_period: 2
+  dz_reference: "onset_sample"
+  pre_win_s: 1.0
+  classification_mode: "legacy_delta_run"
+
+groups:
+  early_n: 3
+  late_n: 3
+
+heatmap:
+  tone_only: true
+  tone_len_policy: "fixed_seconds"
+  fixed_tone_len_seconds: 5.0
+  fixed_seconds_exact: true
+  delta_from_tone_onset: true
+  sort_within_group: "mean_tone_z_desc"
+  include_groups_in_heatmap: ["EarlyOnly", "Overlap", "LateOnly"]
+  clip_min: -1.0
+  clip_max: 1.0
+
+group_order: ["EarlyOnly", "Overlap", "LateOnly"]
+
+colors:
+  EarlyOnly: [1.0, 0.0, 0.0]
+  Overlap: [0.5, 0.5, 0.5]
+  LateOnly: [0.0, 0.0, 1.0]
+
+cell_id:
+  pad_numeric_ids_to: 3
+
+cell_whitelist: {}
+
+plot:
+  fig_w: 15
+  cells_per_inch: 140
+  fig_h_min: 5
+  fig_h_max: 18
+  tone_separator_lw: 0.6
+  tone_separator_alpha: 0.25
+  group_separator_lw: 1.0
+  group_separator_alpha: 0.35
+  dpi: 300

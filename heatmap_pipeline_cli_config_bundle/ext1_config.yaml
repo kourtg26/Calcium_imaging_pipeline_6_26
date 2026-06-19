@@ -1,0 +1,50 @@
+out_prefix: "Ext1"
+out_dir: "/mnt/data"
+work_dir: "/mnt/data/_ext1_build_work"
+input_zips:
+  - "/mnt/data/ext1_raw_trace_files_part1.zip"
+  - "/mnt/data/ext1_raw_trace_files_part2.zip"
+  - "/mnt/data/ext1_raw_trace_files_part3.zip"
+  - "/mnt/data/ext1_raw_trace_files_part4.zip"
+
+# Per-cell z-scoring across the entire session is implicit in this pipeline.
+
+onset_evoked:
+  # Ext2 rule: increase relative to onset (ΔZ = Z(t) - Z(t0))
+  dz_thresh: 0.5
+  consec_frames: 10
+  post_win_s: 3.0
+  dz_reference: "onset_sample"   # "onset_sample" or "pre_window"
+  # pre_win_s only used if dz_reference="pre_window"
+  pre_win_s: 1.0
+
+groups:
+  early_n: 3
+  late_n: 3
+
+heatmap:
+  tone_only: true
+  tone_len_policy: "min_across_all"   # "min_across_all" | "fixed_frames" | "fixed_seconds"
+  # fixed_tone_len_frames: 200
+  # fixed_tone_len_seconds: 10.0
+  include_groups_in_heatmap: ["EarlyOnly", "Overlap", "LateOnly"]
+  clip_min: -1.0
+  clip_max:  1.0
+
+group_order: ["EarlyOnly", "Overlap", "LateOnly"]
+
+colors:
+  EarlyOnly: [1.0, 0.0, 0.0]
+  Overlap:   [0.5, 0.5, 0.5]
+  LateOnly:  [0.0, 0.0, 1.0]
+
+plot:
+  fig_w: 15
+  cells_per_inch: 140
+  fig_h_min: 5
+  fig_h_max: 18
+  tone_separator_lw: 0.6
+  tone_separator_alpha: 0.25
+  group_separator_lw: 1.0
+  group_separator_alpha: 0.35
+  dpi: 300

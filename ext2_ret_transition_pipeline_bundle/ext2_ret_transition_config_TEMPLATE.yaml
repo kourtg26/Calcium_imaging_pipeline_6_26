@@ -1,0 +1,17 @@
+# Template config (informational) for Ext2->Retrieval transition pipeline
+# This pipeline is CLI-driven; keep this file as a record of parameters you intend to use.
+
+ret_zip: "/mnt/data/ret_classes_proportions_only.zip"
+ext2_raw_zips:
+  - "/mnt/data/ext2_raw_trace_files_part1.zip"
+  - "/mnt/data/ext2_raw_trace_files_part2.zip"
+out_dir: "/mnt/data"
+work_dir: "/mnt/data/_ext2_ret_transition_work"
+
+# Ext2 onset-evoked rule (match prior Ext2 processing)
+dz_thresh: 0.5
+consec_frames: 10
+post_win_s: 3.0
+early_n: 3
+late_n: 3
+min_hits_per_period: 2

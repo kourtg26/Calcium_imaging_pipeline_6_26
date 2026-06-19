@@ -1,0 +1,118 @@
+{
+  "paths": {
+    "data_dir": "/path/to/data",
+    "output_dir": "/path/to/output",
+    "ext1_zscored_npz_parts": [
+      "/path/to/ext1_zscored_npz_part1.zip",
+      "/path/to/ext1_zscored_npz_part2.zip",
+      "/path/to/ext1_zscored_npz_part3.zip"
+    ],
+    "ret_zscored_npz_zip": "/path/to/ret_zscored_npz.zip",
+    "ext2_raw_zip": "/path/to/ext2_raw_trace_files.zip",
+    "ret_raw_zip": "/path/to/ret_raw_trace_files.zip",
+    "ext1_classes_zip": "/path/to/ext1_classes_proportions_only.zip",
+    "ext2_classes_zip": "/path/to/ext2_classes_proportions_only.zip",
+    "ret_classes_zip": "/path/to/ret_classes_proportions_only.zip"
+  },
+  "outputs": {
+    "ext1_classes_dir": "ext1_classes",
+    "ext1_summary_csv": "Ext1_classes_proportions_perAnimal.csv",
+    "ext1_cell_long_csv": "Ext1_cellClassifications_long.csv",
+    "ext2_classes_dir": "ext2_classes",
+    "ext2_summary_csv": "Ext2_classes_proportions_perAnimal.csv",
+    "ext2_cell_long_csv": "Ext2_cellClassifications_long.csv",
+    "ret_classes_dir": "ret_classes",
+    "ret_summary_csv": "Ret_classes_proportions_perAnimal.csv",
+    "ret_cell_long_csv": "Ret_cellClassifications_long.csv"
+  },
+  "cohort_sex_map": {
+    "female": [
+      "4",
+      "6",
+      "8",
+      "10",
+      "10488",
+      "10489",
+      "10490",
+      "10491",
+      "11794"
+    ],
+    "male": [
+      "1",
+      "2",
+      "3",
+      "5",
+      "7",
+      "9",
+      "10481",
+      "10482",
+      "10492",
+      "11799"
+    ]
+  },
+  "tone_onset_classification_ext1": {
+    "thr_z": 0.5,
+    "consec_frames": 10,
+    "window_s": 3.0,
+    "min_hits_per_period": 2,
+    "early_tones": [1, 2, 3],
+    "late_tones": [10, 11, 12]
+  },
+  "tone_onset_classification_ext2": {
+    "thr_z": 0.5,
+    "consec_frames": 10,
+    "window_s": 3.0,
+    "min_hits_per_period": 2,
+    "early_tones": [1, 2, 3],
+    "late_tones": [10, 11, 12]
+  },
+  "classification": {
+    "zscore_scope": "entire_session_per_cell",
+    "onset_evoked_rule": {
+      "delta_from_onset": true,
+      "z_threshold": 0.5,
+      "consecutive_frames": 10,
+      "post_onset_seconds": 3.0
+    },
+    "retrieval_early_tone": 1,
+    "retrieval_late_tone": 4
+  },
+  "freezing_metrics": {
+    "trace_window_pre_s": 5.0,
+    "trace_window_post_s": 5.0,
+    "baseline_pre_s": 1.0,
+    "post_s": 1.0,
+    "peak_window_s": 3.0
+  },
+  "tone_subset_defs": {
+    "Ext1": {"Early": [1, 2, 3], "Late": [10, 11, 12]},
+    "Ext2": {"Early": [1, 2, 3], "Late": [10, 11, 12]},
+    "Retrieval": {"Early": [1, 2], "Late": [3, 4]}
+  },
+  "tone_by_tone": {
+    "Ext1": {"tone_count": 12},
+    "Ext2": {"tone_count": 12},
+    "Retrieval": {"tone_count": 4}
+  },
+  "tone_trace": {
+    "Ext1": {
+      "pre_s": 5.0,
+      "post_s": 5.0,
+      "first_n": 3,
+      "last_n": 3
+    },
+    "Ext2": {
+      "pre_s": 5.0,
+      "post_s": 5.0,
+      "first_n": 3,
+      "last_n": 3
+    },
+    "Retrieval": {
+      "pre_s": 5.0,
+      "post_s": 5.0,
+      "first_n": 1,
+      "last_n": 1
+    }
+  },
+  "notes": "Merged repo-level example config covering Ext1, Ext2, Retrieval, freezing analyses, and transition workflows. Replace placeholder paths before running."
+}

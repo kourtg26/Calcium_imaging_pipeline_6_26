@@ -1,0 +1,79 @@
+{
+  "paths": {
+    "data_dir": "__OUTPUT_DIR__",
+    "output_dir": "__OUTPUT_DIR__",
+    "ext1_zscored_npz_parts": [
+      "__DATA_DIR__/sample_ext1_zscored_npz_part1.zip"
+    ],
+    "ret_zscored_npz_zip": "__DATA_DIR__/sample_ret_zscored_npz_bundle.zip",
+    "ext2_raw_zip": "__DATA_DIR__/sample_ext2_raw_trace_files.zip",
+    "ret_raw_zip": "__DATA_DIR__/sample_ret_raw_trace_files.zip",
+    "ext1_classes_zip": "__OUTPUT_DIR__/ext1_classes_proportions_only.zip",
+    "ext2_classes_zip": "__OUTPUT_DIR__/ext2_classes_proportions_only.zip",
+    "ret_classes_zip": "__OUTPUT_DIR__/ret_classes_proportions_only.zip"
+  },
+  "outputs": {
+    "ext1_classes_dir": "ext1_classes",
+    "ext1_summary_csv": "Ext1_classes_proportions_perAnimal.csv",
+    "ext1_cell_long_csv": "Ext1_cellClassifications_long.csv",
+    "ext2_classes_dir": "ext2_classes",
+    "ext2_summary_csv": "Ext2_classes_proportions_perAnimal.csv",
+    "ext2_cell_long_csv": "Ext2_cellClassifications_long.csv",
+    "ret_classes_dir": "ret_classes",
+    "ret_summary_csv": "Ret_classes_proportions_perAnimal.csv",
+    "ret_cell_long_csv": "Ret_cellClassifications_long.csv"
+  },
+  "cohort_sex_map": {
+    "female": ["4", "6"],
+    "male": ["1", "2"]
+  },
+  "tone_onset_classification_ext1": {
+    "thr_z": 0.5,
+    "consec_frames": 10,
+    "window_s": 3.0,
+    "min_hits_per_period": 1,
+    "early_tones": [1, 2],
+    "late_tones": [3, 4]
+  },
+  "tone_onset_classification_ext2": {
+    "thr_z": 0.5,
+    "consec_frames": 10,
+    "window_s": 3.0,
+    "min_hits_per_period": 1,
+    "early_tones": [1, 2],
+    "late_tones": [3, 4]
+  },
+  "classification": {
+    "zscore_scope": "entire_session_per_cell",
+    "onset_evoked_rule": {
+      "delta_from_onset": true,
+      "z_threshold": 0.5,
+      "consecutive_frames": 10,
+      "post_onset_seconds": 3.0
+    },
+    "retrieval_early_tone": 1,
+    "retrieval_late_tone": 4
+  },
+  "freezing_metrics": {
+    "trace_window_pre_s": 5.0,
+    "trace_window_post_s": 5.0,
+    "baseline_pre_s": 1.0,
+    "post_s": 1.0,
+    "peak_window_s": 3.0
+  },
+  "tone_subset_defs": {
+    "Ext1": {"Early": [1, 2], "Late": [3, 4]},
+    "Ext2": {"Early": [1, 2], "Late": [3, 4]},
+    "Retrieval": {"Early": [1, 2], "Late": [3, 4]}
+  },
+  "tone_by_tone": {
+    "Ext1": {"tone_count": 4},
+    "Ext2": {"tone_count": 4},
+    "Retrieval": {"tone_count": 4}
+  },
+  "tone_trace": {
+    "Ext1": {"pre_s": 5.0, "post_s": 5.0, "first_n": 2, "last_n": 2},
+    "Ext2": {"pre_s": 5.0, "post_s": 5.0, "first_n": 2, "last_n": 2},
+    "Retrieval": {"pre_s": 5.0, "post_s": 5.0, "first_n": 2, "last_n": 2}
+  }
+}

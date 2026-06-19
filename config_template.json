@@ -1,0 +1,95 @@
+{
+  "paths": {
+    "ext1_zscored_npz_parts": [
+      "ext1_zscored_npz_part1.zip",
+      "ext1_zscored_npz_part2.zip",
+      "ext1_zscored_npz_part3.zip"
+    ],
+    "ext1_classes_zip": "ext1_classes_proportions_only.zip",
+    "ext2_raw_zip": "ext2_raw_trace_files.zip",
+    "ret_zscored_npz_zip": "ret_zscored_npz_bundle.zip",
+    "ret_classes_zip": "ret_classes_proportions_only.zip",
+    "output_dir": "."
+  },
+  "tone_onset_classification_ext2": {
+    "thr_z": 0.5,
+    "consec_frames": 10,
+    "window_s": 3.0,
+    "early_tones": [
+      1,
+      2,
+      3
+    ],
+    "late_tones": [
+      10,
+      11,
+      12
+    ]
+  },
+  "freezing_metrics": {
+    "baseline_pre_s": 1.0,
+    "post_s": 1.0,
+    "peak_window_s": 3.0,
+    "trace_window_pre_s": 5.0,
+    "trace_window_post_s": 5.0
+  },
+  "tone_subset_defs": {
+    "Ext1": {
+      "EarlyTones": [
+        1,
+        2,
+        3
+      ],
+      "LateTones": [
+        10,
+        11,
+        12
+      ]
+    },
+    "Ext2": {
+      "EarlyTones": [
+        1,
+        2,
+        3
+      ],
+      "LateTones": [
+        10,
+        11,
+        12
+      ]
+    },
+    "Retrieval": {
+      "EarlyTones": [
+        1
+      ],
+      "LateTones": [
+        4
+      ]
+    }
+  },
+  "sex_mapping": {
+    "Female": [
+      "10",
+      "10488",
+      "10489",
+      "10490",
+      "10491",
+      "11794",
+      "4",
+      "6",
+      "8"
+    ],
+    "Male": [
+      "1",
+      "10481",
+      "10482",
+      "10492",
+      "11799",
+      "2",
+      "3",
+      "5",
+      "7",
+      "9"
+    ]
+  }
+}

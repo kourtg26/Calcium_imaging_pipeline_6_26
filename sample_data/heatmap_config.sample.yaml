@@ -1,0 +1,42 @@
+out_prefix: "Ext2Sample"
+out_dir: "__OUTPUT_DIR__/heatmap"
+work_dir: "__OUTPUT_DIR__/_heatmap_work"
+input_zips:
+  - "__DATA_DIR__/sample_ext2_raw_trace_files.zip"
+
+onset_evoked:
+  dz_thresh: 0.5
+  consec_frames: 10
+  post_win_s: 3.0
+  dz_reference: "onset_sample"
+  pre_win_s: 1.0
+
+groups:
+  early_n: 2
+  late_n: 2
+
+heatmap:
+  tone_only: true
+  tone_len_policy: "fixed_frames"
+  fixed_tone_len_frames: 12
+  include_groups_in_heatmap: ["EarlyOnly", "Overlap", "LateOnly"]
+  clip_min: -1.0
+  clip_max: 1.0
+
+group_order: ["EarlyOnly", "Overlap", "LateOnly"]
+
+colors:
+  EarlyOnly: [1.0, 0.2, 0.2]
+  Overlap: [0.6, 0.6, 0.6]
+  LateOnly: [0.2, 0.3, 1.0]
+
+plot:
+  fig_w: 10
+  cells_per_inch: 80
+  fig_h_min: 4
+  fig_h_max: 12
+  tone_separator_lw: 0.6
+  tone_separator_alpha: 0.25
+  group_separator_lw: 1.0
+  group_separator_alpha: 0.35
+  dpi: 200
