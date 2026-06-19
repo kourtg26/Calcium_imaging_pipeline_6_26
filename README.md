@@ -31,6 +31,16 @@ Install the public release dependencies with:
 pip install -r requirements-public.txt
 ```
 
+## Expected Install and Run Times
+On a standard desktop or laptop computer with a recent CPU, local storage, and a normal home or office internet connection, a typical first-time setup looks like this:
+
+- Dependency install: about 2 to 10 minutes
+- Sample archive rebuild: usually under 1 minute
+- Full sample pipeline run: about 1 minute
+- Sample smoke test: about 1 minute
+
+These are approximate. First-time installs can take longer on slower connections, and full real-dataset runs can take substantially longer than the bundled sample dataset depending on animal count, trace size, and whether plots are being regenerated from scratch.
+
 ## Quick Start
 Use the sample dataset first. It is the fastest way to confirm the public release runs correctly on your machine.
 
