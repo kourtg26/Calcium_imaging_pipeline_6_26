@@ -126,3 +126,4 @@ Heatmaps:
 - Keep `animal_id` and `cell_id` naming consistent across sessions if you need cross-session registration.
 - Some workflows support recursive CSV discovery after zip extraction.
 - Some root-level scripts are preserved as historical wrappers or legacy entrypoints, but the bundle directories above are the preferred paths for new use.
+- For workflow verification versus full manuscript regeneration, see `REPRODUCIBILITY.md`.
