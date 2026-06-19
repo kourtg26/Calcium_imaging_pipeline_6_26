@@ -34,16 +34,34 @@ pip install -r requirements-public.txt
 ## Quick Start
 Use the sample dataset first. It is the fastest way to confirm the public release runs correctly on your machine.
 
-Run the sample pipeline:
+## Run With Sample Data
+This repo now includes a small real-data sample cohort under `sample_data/` plus a Python runner that exercises the main pipeline bundles end to end.
 
+Rebuild the sample archives manually if you want to refresh them:
+```bash
+python sample_data/generate_sample_data.py
+```
+
+Run the verified sample pipeline into a scratch output directory:
 ```bash
 python sample_data/run_sample_pipeline.py --output-dir /tmp/grin-sample-run
 ```
 
-If the sample archives are missing, the runner will generate them automatically before starting.
+If the sample archives are missing, that runner will generate them automatically before starting.
+
+For sample runs, Ext1 and Ext2 use the current `3 s / 2-of-3` onset classifier so the demo outputs stay aligned with the newer production-style session classification.
+
+That command runs:
+- Ext1 classification and tone-block summaries
+- Ext2 classification and tone-block summaries
+- Retrieval classification and tone-by-tone summaries
+- Ext1→Ext2→Retrieval alluvial outputs
+- Ext1→Ext2 transition pipeline
+- Ext2→Retrieval transition pipeline
+- Freezing analyses bundle
+- Heatmap generation
 
 Run the smoke test:
-
 ```bash
 python -m unittest tests.test_sample_pipeline
 ```

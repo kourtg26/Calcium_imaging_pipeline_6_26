@@ -31,17 +31,17 @@
     "thr_z": 0.5,
     "consec_frames": 10,
     "window_s": 3.0,
-    "min_hits_per_period": 1,
-    "early_tones": [1, 2],
-    "late_tones": [3, 4]
+    "min_hits_per_period": 2,
+    "early_tones": [1, 2, 3],
+    "late_tones": [10, 11, 12]
   },
   "tone_onset_classification_ext2": {
     "thr_z": 0.5,
     "consec_frames": 10,
     "window_s": 3.0,
-    "min_hits_per_period": 1,
-    "early_tones": [1, 2],
-    "late_tones": [3, 4]
+    "min_hits_per_period": 2,
+    "early_tones": [1, 2, 3],
+    "late_tones": [10, 11, 12]
   },
   "classification": {
     "zscore_scope": "entire_session_per_cell",
@@ -62,18 +62,18 @@
     "peak_window_s": 3.0
   },
   "tone_subset_defs": {
-    "Ext1": {"Early": [1, 2], "Late": [3, 4]},
-    "Ext2": {"Early": [1, 2], "Late": [3, 4]},
+    "Ext1": {"Early": [1, 2, 3], "Late": [10, 11, 12]},
+    "Ext2": {"Early": [1, 2, 3], "Late": [10, 11, 12]},
     "Retrieval": {"Early": [1, 2], "Late": [3, 4]}
   },
   "tone_by_tone": {
-    "Ext1": {"tone_count": 4},
-    "Ext2": {"tone_count": 4},
+    "Ext1": {"tone_count": 12},
+    "Ext2": {"tone_count": 12},
     "Retrieval": {"tone_count": 4}
   },
   "tone_trace": {
-    "Ext1": {"pre_s": 5.0, "post_s": 5.0, "first_n": 2, "last_n": 2},
-    "Ext2": {"pre_s": 5.0, "post_s": 5.0, "first_n": 2, "last_n": 2},
-    "Retrieval": {"pre_s": 5.0, "post_s": 5.0, "first_n": 2, "last_n": 2}
+    "Ext1": {"pre_s": 5.0, "post_s": 5.0, "first_n": 3, "last_n": 3},
+    "Ext2": {"pre_s": 5.0, "post_s": 5.0, "first_n": 3, "last_n": 3},
+    "Retrieval": {"pre_s": 5.0, "post_s": 5.0, "first_n": 1, "last_n": 1}
   }
 }

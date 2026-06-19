@@ -162,12 +162,18 @@ def main(cfg):
     # plots by session with sex colors not enforced (matplotlib default cycle)
     def scatter_by_sex(df, xcol, ycol, title, outpng):
         fig, ax=plt.subplots(figsize=(6.2,5.2))
+        plotted = False
         for sex, sub in df.groupby("sex"):
-            ax.scatter(sub[xcol], sub[ycol], s=22, alpha=0.8, label=sex)
+            valid = np.isfinite(sub[xcol].to_numpy(dtype=float, copy=False)) & np.isfinite(sub[ycol].to_numpy(dtype=float, copy=False))
+            if not np.any(valid):
+                continue
+            ax.scatter(sub.loc[valid, xcol], sub.loc[valid, ycol], s=22, alpha=0.8, label=sex)
+            plotted = True
         ax.axhline(0, alpha=0.2); ax.axvline(0, alpha=0.2)
         ax.set_xlabel(xcol); ax.set_ylabel(ycol)
         ax.set_title(title)
-        ax.legend(frameon=False)
+        if plotted:
+            ax.legend(frameon=False)
         plt.tight_layout()
         plt.savefig(outpng, dpi=300)
         plt.close()
@@ -200,10 +206,20 @@ def main(cfg):
 
     # correlations per animal across sessions
     fig, ax=plt.subplots(figsize=(7.2,4.8))
-    for sess, sub in corr2_df.groupby("session"):
-        ax.scatter(np.full(len(sub), sess), sub["pearson_r_tonePeak_vs_freezeDelta"], s=45, alpha=0.85, label=sess)
+    session_order = ["Ext1", "Ext2", "Retrieval"]
+    for idx, sess in enumerate(session_order):
+        sub = corr2_df[corr2_df["session"] == sess]
+        vals = sub["pearson_r_tonePeak_vs_freezeDelta"].to_numpy(dtype=float, copy=False)
+        valid = np.isfinite(vals)
+        if not np.any(valid):
+            continue
+        ax.scatter(np.full(np.sum(valid), idx), vals[valid], s=45, alpha=0.85, label=sess)
+    ax.set_xticks(range(len(session_order)))
+    ax.set_xticklabels(session_order)
     ax.set_ylabel("Pearson r (tonePeak vs freezeΔ)")
     ax.set_title("Per-animal correlations across sessions")
+    if ax.has_data():
+        ax.legend(frameon=False)
     plt.tight_layout()
     plt.savefig(os.path.join(outdir, "AllSessions_corr_freezeOnsetDelta_vs_toneOnsetPeak_sessionComparison.png"), dpi=300)
     plt.close()

@@ -64,7 +64,6 @@ def main() -> None:
     output_dir = Path(args.output_dir).resolve()
     output_dir.mkdir(parents=True, exist_ok=True)
     (REPO_ROOT / ".tmp_mplconfig").mkdir(parents=True, exist_ok=True)
-
     ensure_sample_archives(force=args.regenerate_data)
 
     config_path = render_json_template(SAMPLE_DIR / "pipeline_config.sample.json", SAMPLE_DIR, output_dir)
@@ -93,11 +92,11 @@ def main() -> None:
             "--work_dir",
             str(output_dir / "_ext1_ext2_transition_work"),
             "--early_n",
-            "2",
+            "3",
             "--late_n",
-            "2",
+            "3",
             "--min_hits_per_period",
-            "1",
+            "2",
         ]
     )
     run(
@@ -113,11 +112,11 @@ def main() -> None:
             "--work_dir",
             str(output_dir / "_ext2_ret_transition_work"),
             "--early_n",
-            "2",
+            "3",
             "--late_n",
-            "2",
+            "3",
             "--min_hits_per_period",
-            "1",
+            "2",
         ]
     )
 

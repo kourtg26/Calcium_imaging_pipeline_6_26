@@ -6,6 +6,8 @@ import tempfile
 import unittest
 from pathlib import Path
 
+import pandas as pd
+
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
@@ -42,6 +44,21 @@ class SamplePipelineSmokeTest(unittest.TestCase):
             ]
             missing = [str(path) for path in expected if not path.exists()]
             self.assertEqual([], missing, f"Missing expected sample outputs: {missing}")
+
+            ext1 = pd.read_csv(out_dir / "Ext1_classes_proportions_perAnimal.csv")
+            ext2 = pd.read_csv(out_dir / "Ext2_classes_proportions_perAnimal.csv")
+            ret = pd.read_csv(out_dir / "Ret_classes_proportions_perAnimal.csv")
+
+            def weighted_responsive(df: pd.DataFrame) -> float:
+                responsive = 1.0 - df["p_Neither"]
+                return float((responsive * df["n_cells"]).sum() / df["n_cells"].sum())
+
+            ext1_resp = weighted_responsive(ext1)
+            ext2_resp = weighted_responsive(ext2)
+            ret_resp = weighted_responsive(ret)
+
+            self.assertGreater(ext1_resp, ext2_resp)
+            self.assertGreater(ret_resp, ext2_resp)
 
 
 if __name__ == "__main__":
